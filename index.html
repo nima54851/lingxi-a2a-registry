@@ -236,7 +236,7 @@
 <header class="header">
   <div class="header-logo">
     <div class="logo-icon">🤝</div>
-    <span>灵犀 A2A Registry <span class="badge-demo">DEMO</span></span>
+    <span>灵犀 A2A Registry · <a href="https://nima54851.github.io/lingxi-a2a-registry/" style="color:var(--accent)">市场页面</a></span>
   </div>
   <nav class="header-nav">
     <a href="#agents" class="active" onclick="showSection('agents')">市场</a>
@@ -256,12 +256,12 @@
 </section>
 
 <div class="api-banner">
-  <div class="api-banner-inner">
-    <div style="display:flex;align-items:center;gap:0.5rem">
-      <div class="status-dot" id="api-dot"></div>
-      <span id="api-status-text" style="font-size:0.9rem">🔧 演示模式 · 服务器 API 已运行，待穿透后接入</span>
-    </div>
-    <span style="font-size:0.82rem;color:var(--muted)">⚙️ 当前：演示模式 · API 服务本地运行 · 外网穿透待配置</span>
+  <div class="api-banner-inner" style="justify-content:center">
+    <span style="font-size:0.85rem;color:var(--accent)">✨</span>
+    <span style="font-size:0.85rem;color:var(--muted)">
+      灵犀全球 A2A Registry · 演示模式 · <a href="https://github.com/nima54851/lingxi-a2a-registry" style="color:var(--accent)">查看源码</a> ·
+      API 在服务器本地运行（curl 可调）· 穿透搭好后完整接入
+    </span>
   </div>
 </div>
 
@@ -469,10 +469,7 @@ function showToast(msg, isError = false) {
 }
 
 async function checkAPI() {
-  const dot = document.getElementById('api-dot');
-  const text = document.getElementById('api-status-text');
-  dot.className = 'status-dot offline';
-  text.textContent = '❌ API 未连接（演示模式）';
+  // GitHub Pages 无法跨域调用本地 API，显示演示数据
   document.getElementById('stat-agents').textContent = DEMO_AGENTS.length;
   document.getElementById('stat-calls').textContent = DEMO_AGENTS.reduce((s,a) => s + a.call_count, 0).toLocaleString();
   document.getElementById('stat-24h').textContent = '127';
